@@ -525,6 +525,21 @@ function ServiceThreeSteps({ compact = false }) {
 
 /* ===== CTA リボン（TimeRex 予約埋め込み） ===== */
 function CTARibbon({ minimal = false }) {
+  React.useEffect(() => {
+    if (document.getElementById('timerex_embed')) {
+      if (window.TimerexCalendar) window.TimerexCalendar();
+      return;
+    }
+    var script = document.createElement('script');
+    script.id = 'timerex_embed';
+    script.src = 'https://asset.timerex.net/js/embed.js';
+    script.async = true;
+    script.onload = function () {
+      if (window.TimerexCalendar) window.TimerexCalendar();
+    };
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <section id="contact" className="section" style={{ padding: minimal ? "60px 0" : "40px 0 60px" }}>
       <div className="container-narrow">
@@ -552,12 +567,10 @@ function CTARibbon({ minimal = false }) {
 
         {/* TimeRex 予約カレンダー埋め込み */}
         <div className="timerex-embed-wrapper">
-          <iframe
-            src="https://timerex.net/s/contact_7751_a6d8/d844c8aa"
-            title="無料60分相談のご予約"
-            loading="lazy"
-            className="timerex-embed"
-          ></iframe>
+          <div
+            id="timerex_calendar"
+            data-url="https://timerex.net/s/contact_7751_a6d8/d844c8aa"
+          ></div>
         </div>
 
         <p className="contact-note">

@@ -1338,23 +1338,20 @@ html, body {
 
 /* --- TimeRex 予約カレンダー埋め込み ---------------------- */
 .timerex-embed-wrapper {
+  margin-top: 24px;
+}
+#timerex_calendar {
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  margin-top: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  min-height: 600px;
 }
-.timerex-embed {
-  width: 100%;
-  height: 820px;
-  border: 0;
+#timerex_calendar iframe {
   display: block;
-}
-@media (max-width: 720px) {
-  .timerex-embed {
-    height: 760px;
-  }
+  width: 100%;
+  border: 0;
 }
 .contact-form-wrap {
   max-width: 460px;
