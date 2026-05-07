@@ -523,34 +523,8 @@ function ServiceThreeSteps({ compact = false }) {
   );
 }
 
-/* ===== CTA リボン ===== */
+/* ===== CTA リボン（TimeRex 予約埋め込み） ===== */
 function CTARibbon({ minimal = false }) {
-  React.useEffect(() => {
-    var toggle = document.getElementById('contact-toggle');
-    var wrap = document.getElementById('contact-form');
-    var submitBtn = document.getElementById('submit-btn');
-    var form = document.getElementById('inquiry-form');
-    if (!toggle || !wrap || !form) return;
-
-    function onToggle() {
-      var open = wrap.hidden;
-      wrap.hidden = !open;
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'フォームを閉じる' : '無料60分相談を申し込む';
-    }
-    function onSubmit() {
-      if (!submitBtn) return;
-      submitBtn.disabled = true;
-      submitBtn.textContent = '送信中…';
-    }
-    toggle.addEventListener('click', onToggle);
-    form.addEventListener('submit', onSubmit);
-    return () => {
-      toggle.removeEventListener('click', onToggle);
-      form.removeEventListener('submit', onSubmit);
-    };
-  }, []);
-
   return (
     <section id="contact" className="section" style={{ padding: minimal ? "60px 0" : "40px 0 60px" }}>
       <div className="container-narrow">
@@ -574,73 +548,21 @@ function CTARibbon({ minimal = false }) {
             <div className="cta-feature">出張も可（交通費別）</div>
           </div>
 
-          <div className="contact-box" style={{ marginTop: 28 }}>
-            <button
-              type="button"
-              className="btn btn-contact"
-              id="contact-toggle"
-              aria-expanded="false"
-              aria-controls="contact-form"
-              style={{ background: "var(--navy-900)", color: "#fff" }}
-            >
-              無料60分相談を申し込む
-            </button>
-
-            <div id="contact-form" className="contact-form-wrap" hidden>
-              <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="b0bb2ab9-0584-49de-b67a-73e763da458b" />
-                <input type="hidden" name="subject" value="BitVoyageサイトからのお問い合わせ" />
-                <input type="hidden" name="from_name" value="BitVoyage" />
-                <input type="hidden" name="redirect" value="https://bitvoyage.co.jp/thanks.html" />
-                <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex="-1" autoComplete="off" />
-
-                <div className="form-group">
-                  <label htmlFor="field-company">会社名 <span className="required">必須</span></label>
-                  <input type="text" id="field-company" name="company" required placeholder="例：株式会社○○" autoComplete="organization" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-name">ご担当者名 <span className="required">必須</span></label>
-                  <input type="text" id="field-name" name="name" required placeholder="例：山田 太郎" autoComplete="name" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-email">メールアドレス <span className="required">必須</span></label>
-                  <input type="email" id="field-email" name="email" required placeholder="例：info@example.com" autoComplete="email" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-phone">電話番号（任意）</label>
-                  <input type="tel" id="field-phone" name="phone" placeholder="例：090-1234-5678" autoComplete="tel" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-message">ご相談内容 <span className="required">必須</span></label>
-                  <textarea id="field-message" name="message" rows="3" required placeholder="例：Excelの手入力が増えて困っている"></textarea>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-date1">ご希望日時（第1希望）</label>
-                  <input type="text" id="field-date1" name="date1" placeholder="例：4/10（木）10:00〜" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-date2">ご希望日時（第2希望）</label>
-                  <input type="text" id="field-date2" name="date2" placeholder="例：4/11（金）14:00〜" />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="field-date3">ご希望日時（第3希望）</label>
-                  <input type="text" id="field-date3" name="date3" placeholder="例：4/14（月）終日可" />
-                </div>
-
-                <button type="submit" className="btn btn-submit" id="submit-btn">この内容で申し込む</button>
-              </form>
-            </div>
-
-            <p className="contact-note" style={{ color: "var(--navy-900)", opacity: 0.75 }}>通常2営業日以内に日程をご案内いたします。</p>
-          </div>
         </div>
+
+        {/* TimeRex 予約カレンダー埋め込み */}
+        <div className="timerex-embed-wrapper">
+          <iframe
+            src="https://timerex.net/s/contact_7751_a6d8/d844c8aa"
+            title="無料60分相談のご予約"
+            loading="lazy"
+            className="timerex-embed"
+          ></iframe>
+        </div>
+
+        <p className="contact-note">
+          予約以外のお問い合わせは <a href="mailto:contact@bitvoyage.co.jp">contact@bitvoyage.co.jp</a> までお気軽にどうぞ。
+        </p>
       </div>
     </section>
   );
