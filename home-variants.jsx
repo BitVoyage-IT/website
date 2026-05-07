@@ -10,13 +10,13 @@ function HandLine({ d, color = "var(--yellow-500)", width = 4, len = 300 }) {
   );
 }
 
-/* ===== 案A （採用版）— デザインは忠実、レイアウトはミニマル寄り ===== */
+/* ===== 案A （採用版）— チラシ最終版に整合 ===== */
 function HomeA() {
   useRevealOnScroll();
   return (
     <div className="page bg-grid">
       <TopNav currentPage="home" />
-      {/* ヒーロー：中央寄せ、イラストなし */}
+      {/* ヒーロー：中央寄せ、コピー一本勝負 */}
       <section className="home-hero">
         <div className="container-narrow fade-up draw-line-trigger" style={{ textAlign: "center" }}>
           <div style={{ fontFamily: "var(--font-hand)", color: "var(--navy-700)", fontSize: 14, marginBottom: 16, letterSpacing: "0.1em" }}>
@@ -24,22 +24,25 @@ function HomeA() {
           </div>
           <h1 className="home-hero-title">
             <span className="home-hero-title-desktop">
-              現場の「詰まり」をほどき、<br/>
-              <span className="underline-hand">業務が止まらない状態にする。</span>
+              忙しいのに、進まない。<br/>
+              人に頼りきりの業務を、<br/>
+              <span className="underline-hand">迷わず回る流れ</span>に整えます。
             </span>
             <span className="home-hero-title-mobile">
-              現場の「詰まり」を<br/>
-              ほどき、<br/>
-              <span className="underline-hand">業務が止まらない<br/>状態にする。</span>
+              忙しいのに、<br/>
+              進まない。<br/>
+              人に頼りきりの業務を、<br/>
+              <span className="underline-hand">迷わず回る流れ</span>に<br/>
+              整えます。
             </span>
           </h1>
           <p className="home-hero-lead">
-            小さく整えながら、<br className="mobile-only" />
-            無理なく続く形にしていきます。
+            毎日2〜3時間、<br className="mobile-only" />
+            同じ作業を繰り返していませんか。
           </p>
           <div className="home-hero-actions">
             <a href="#contact" className="btn btn-primary">
-              <Icon.Clock /> <span>まずは1つ、<br className="mobile-only" />業務を見せてください</span>
+              <Icon.Clock /> <span>無料60分相談 + ご提案メモ</span>
             </a>
             <a href="service.html" className="btn btn-outline">
               サービスを見る <Icon.ArrowRight />
@@ -48,74 +51,153 @@ function HomeA() {
         </div>
       </section>
 
-      {/* こんなお困りごとはありませんか？ */}
-      <section className="section" style={{ paddingTop: 40, paddingBottom: 40 }}>
+      {/* こんな状態、ありませんか？ */}
+      <section className="section" style={{ paddingTop: 40, paddingBottom: 24 }}>
         <div className="container-narrow fade-up">
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
             <h2 className="problem-heading" style={{ fontSize: 28, color: "var(--navy-900)", margin: "0 0 12px", fontWeight: 800, display: "inline-flex", alignItems: "center", gap: 12 }}>
               <span style={{ display: "inline-block", width: 24, height: 24, border: "2px solid var(--navy-800)", borderRadius: 4, position: "relative" }}>
                 <span style={{ position: "absolute", left: 5, top: -2, width: 8, height: 15, borderRight: "3px solid var(--navy-800)", borderBottom: "3px solid var(--navy-800)", transform: "rotate(42deg)" }}></span>
               </span>
-              <span>こんな<span className="marker">お困りごと</span>は<br className="mobile-only" />ありませんか？</span>
+              <span>こんな<span className="marker">状態</span>、ありませんか？</span>
             </h2>
           </div>
-          <div style={{ maxWidth: 560, margin: "0 auto" }}>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          <div className="problem-with-illustration">
+            <div className="problem-illustration" aria-hidden="true">
+              <img src="assets/illustrations/01-person-thinking.png" alt="" />
+            </div>
+            <ul className="problem-list">
               {[
-                <>業務が増えて、どこから手をつけていいか<br className="mobile-only" />分からない</>,
-                <>Excelや手作業が増え、<br className="mobile-only" />ミスや手戻りが起きている</>,
-                <>特定の人に業務が偏り、<br className="mobile-only" />引き継げない</>,
-                <>ツールを入れたが、<br className="mobile-only" />結局使われていない</>,
+                "同じ情報を、Excelに何度も入力している",
+                "\"〇〇さん\" が休むと、業務が止まる",
+                "受注・見積・請求が、毎月締切ギリギリでもつれ込む",
+                "改善したいが、何から手をつけたらいいか分からない",
+                "ITに詳しい人が、社内にいない",
               ].map((t, i) => (
-                <li key={i} style={{ display: "flex", gap: 14, padding: "10px 0", alignItems: "flex-start" }}>
-                  <span style={{ width: 9, height: 9, borderRadius: "50%", background: "var(--yellow-500)", marginTop: 11, flexShrink: 0 }}></span>
-                  <span style={{ fontSize: 17, color: "var(--ink-900)" }}>{t}</span>
+                <li key={i} className="problem-item">
+                  <span className="problem-checkbox" aria-hidden="true"></span>
+                  <span className="problem-text">{t}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <p style={{ textAlign: "center", fontSize: 15, color: "var(--ink-700)", marginTop: 32, lineHeight: 1.9 }}>
-            現場を見ながら、ムダな作業を減らし、<br/>
-            自然に回る形に整えます。
-          </p>
+          {/* 損失コスト */}
+          <div className="loss-cost-box">
+            <div className="loss-cost-eyebrow">放っておくと</div>
+            <p className="loss-cost-text">
+              1日 <strong>2時間</strong> の手作業 →
+              年間 <strong className="loss-cost-highlight">約500時間</strong>。
+            </p>
+            <p className="loss-cost-note">
+              小さな詰まりほど、毎日の積み重ねで大きな損失になります。
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* BitVoyageがやること */}
+      {/* 経営者 vs 現場ギャップ */}
+      <section className="section gap-section">
+        <div className="container fade-up">
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div className="section-eyebrow">macro vs micro</div>
+            <h2 style={{ fontSize: 28, color: "var(--navy-900)", margin: "0 0 14px", fontWeight: 800, lineHeight: 1.45 }}>
+              「<span className="marker">人手不足</span>」の正体は、<br className="mobile-only"/>
+              現場の小さな詰まりの積み重ね。
+            </h2>
+            <p style={{ fontSize: 15, color: "var(--ink-700)", lineHeight: 1.9, margin: 0 }}>
+              経営者から見えている問題と、<br className="mobile-only"/>
+              現場で実際に起きていることには、ギャップがあります。
+            </p>
+          </div>
+          <div className="gap-grid">
+            <div className="gap-card gap-card-macro">
+              <div className="gap-card-label">経営者・部門長から<br/>見えている問題</div>
+              <ul className="gap-list">
+                <li>人手が足りない</li>
+                <li>業務が多い</li>
+                <li>DXを進めたい</li>
+                <li>採用を増やすべき？</li>
+              </ul>
+              <div className="gap-card-tag">大きな話になりがち</div>
+            </div>
+            <div className="gap-arrow"><Icon.ArrowRight size={28} /></div>
+            <div className="gap-card gap-card-micro">
+              <div className="gap-card-label">現場で実際に起きている<br/>"詰まり"</div>
+              <ul className="gap-list">
+                <li>Excelに同じ情報を3回入力</li>
+                <li>FAX注文書を手で見積に転記</li>
+                <li>"〇〇さん" だけがマクロを触れる</li>
+                <li>在庫表を毎朝手で集計</li>
+                <li>顧客情報がExcel/LINE/紙で散在</li>
+              </ul>
+              <div className="gap-card-tag gap-card-tag-accent">本当のロスはここ</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 詰まりが取れると、こう変わる（結果ベース） */}
       <section className="section" style={{ padding: "60px 0", background: "var(--paper-2)" }}>
         <div className="container-narrow fade-up">
           <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <div className="section-eyebrow">what we do</div>
-            <h2 style={{ fontSize: 28, color: "var(--navy-900)", margin: "0 0 16px", fontWeight: 800 }}>
-              <span className="marker">BitVoyage</span>がやること
+            <div className="section-eyebrow">outcome</div>
+            <h2 style={{ fontSize: 28, color: "var(--navy-900)", margin: "0 0 14px", fontWeight: 800 }}>
+              詰まりが取れると、<span className="marker">こう変わります</span>。
             </h2>
-            <p style={{ fontSize: 15, color: "var(--ink-700)", lineHeight: 1.9, margin: 0 }}>
-              業務を見て、止まらず回る状態に整えていきます。
-            </p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            {[
-              { n: "1", t: "無駄な作業を減らす", d: "業務を見て、手作業や転記などのムダを見つけて減らします。すぐに変えられるところから改善していきます。" },
-              { n: "2", t: "詰まりをなくす", d: "業務の流れを整理しながら、止まりやすい工程や属人化している部分を見つけ、流れが止まらない状態に整えます。" },
-              { n: "3", t: "無理なく回る形にする", d: "全部を一気に変えるのではなく、今のやり方に合わせて少しずつ仕組みにしていきます。" },
-            ].map(s => (
-              <div key={s.n} style={{ display: "grid", gridTemplateColumns: "44px 1fr", gap: 20, alignItems: "flex-start", padding: "20px 0", borderBottom: "1px dashed var(--line)" }}>
-                <span className="num-badge" style={{ marginTop: 2 }}>{s.n}</span>
-                <div>
-                  <h3 style={{ fontSize: 19, color: "var(--navy-900)", margin: "0 0 8px", fontWeight: 800 }}>{s.t}</h3>
-                  <p style={{ fontSize: 15, color: "var(--ink-700)", lineHeight: 1.9, margin: 0 }}>{s.d}</p>
+          <div className="outcome-with-illustration">
+            <div className="outcome-illustration" aria-hidden="true">
+              <img src="assets/illustrations/03-person-forward.png" alt="" />
+            </div>
+            <div className="outcome-grid">
+              {[
+                { t: "「確認」「探す」「聞く」が減る", d: "情報の置き場が決まり、聞きにいかなくても進む状態に。" },
+                { t: "誰がやっても同じ流れで回る", d: "属人化していた業務が、引き継げる形に。" },
+                { t: "状態が「見ればわかる」ようになる", d: "進捗・在庫・顧客状況が、一目で把握できる形に。" },
+                { t: "判断する回数が減る", d: "毎回考えていた判断をルール化し、迷う時間を削減。" },
+                { t: "問題が起きる前に気づける", d: "ミスや遅れの兆候が、起きる前に見える状態に。" },
+              ].map((o, i) => (
+                <div key={i} className="outcome-item">
+                  <span className="outcome-check"><Icon.Check /></span>
+                  <div>
+                    <div className="outcome-title">{o.t}</div>
+                    <div className="outcome-desc">{o.d}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3ステップ */}
-      <ServiceThreeSteps />
+      {/* ツール屋ではない（ポジショニング） */}
+      <section className="section" style={{ padding: "60px 0" }}>
+        <div className="container-narrow fade-up">
+          <div className="position-block">
+            <div className="position-eyebrow">our motto</div>
+            <h2 className="position-title">
+              BitVoyage のモットー
+            </h2>
+            <p className="position-text">
+              ツールを導入する前に、<br/>
+              業務の<span className="underline-hand">流れ</span>を整える。<br/>
+              必要な部分にだけ、ツールを入れる。
+            </p>
+            <p className="position-note">
+              AIも、新しいツールも、流れに合えば取り入れます。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5階層サービス（簡潔に） */}
+      <ServiceFiveSteps />
 
       {/* CTA リボン */}
       <CTARibbon />
+
+      {/* 事例パートナー */}
+      <CasePartnerBlock />
 
       <SiteFooter />
     </div>
@@ -309,7 +391,86 @@ function TangleIllustration({ small = false }) {
   );
 }
 
-/* ===== 3ステップサービス（共通パーツ） ===== */
+/* ===== 5階層サービス（改善ノート行スタイル） ===== */
+function ServiceFiveSteps() {
+  const steps = [
+    { n: "1", t: "小さな業務改善", sub: "毎日くり返す手作業を減らす", price: "5〜20万円", href: "service.html#small" },
+    { n: "2", t: "業務領域の整理・自動化", sub: "1つの業務領域を、迷わず回る形に", price: "20〜80万円", href: "service.html#domain" },
+    { n: "3", t: "業務構造診断パック", sub: "業務全体を整理したい会社向け", price: "15万円〜", href: "service.html#diagnose" },
+    { n: "4", t: "継続改善サポート", sub: "外部の立場で優先順位を判断し続ける", price: "月額 5万円〜", href: "service.html#advisor" },
+    { n: "5", t: "業務全体の整理・再構築", sub: "複数部門・複数業務にまたがる見直し", price: "50万円〜", href: "service.html#rebuild" },
+  ];
+  return (
+    <section className="section" style={{ paddingTop: 60, paddingBottom: 80 }}>
+      <div className="container-narrow fade-up">
+        <div className="home-service-heading">
+          <div className="section-eyebrow">service</div>
+          <h2>
+            1つの業務から、<span className="marker">会社全体の流れ</span>まで。
+          </h2>
+          <p>
+            5つのサービスを、御社の状況に合わせて組み合わせます。
+          </p>
+        </div>
+        <div className="service-five-grid">
+          {steps.map(s => (
+            <a key={s.n} href={s.href} className="service-five-row">
+              <div className="service-five-tab">{s.n}</div>
+              <div className="service-five-content">
+                <h3 className="service-five-title">{s.t}</h3>
+                <p className="service-five-sub">{s.sub}</p>
+              </div>
+              <div className="service-five-price">{s.price}</div>
+            </a>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 32 }}>
+          <a href="service.html" className="btn btn-outline">
+            サービス詳細を見る <Icon.ArrowRight />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===== 事例パートナー特典ブロック（募集ポスター） ===== */
+function CasePartnerBlock() {
+  return (
+    <section className="section case-partner-section">
+      <div className="container-narrow fade-up">
+        <div className="case-partner-card">
+          <div className="case-partner-stamp" aria-hidden="true">
+            <span className="case-partner-stamp-large">募集中</span>
+            <span className="case-partner-stamp-small">先着3社</span>
+          </div>
+          <h2 className="case-partner-title">
+            事例パートナー、<span className="underline-hand">募集中</span>。
+          </h2>
+          <p className="case-partner-lead">
+            ご契約後の最初の「小さな業務改善」1件を、
+          </p>
+          <div className="case-partner-headline">
+            <span className="case-partner-half">半 額</span>
+            <span className="case-partner-suffix">でご提供。</span>
+          </div>
+          <div className="case-partner-condition">
+            <div className="case-partner-condition-label">条件</div>
+            <p className="case-partner-condition-text">
+              改善前と改善後の状態を、<br className="mobile-only"/>事例として公開させていただける企業様<br/>
+              社名公開を歓迎。<br className="mobile-only"/>ご希望により業種のみの公開でも可
+            </p>
+          </div>
+          <p className="case-partner-note">
+            ※ 3社埋まり次第、本特典は終了します。
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ===== 3ステップサービス（HomeB / HomeC 用、互換維持） ===== */
 function ServiceThreeSteps({ compact = false }) {
   const steps = [
     { n: "1", t: "小さな業務改善", sub: "まずは1つの業務から改善します", price: "数万円〜", icon: <Icon.Diagnose size={56} />, list: ["業務内容を確認","改善ポイントを提案","改善内容の実装・設定","簡単な運用方法の共有"] },
@@ -375,7 +536,7 @@ function CTARibbon({ minimal = false }) {
       var open = wrap.hidden;
       wrap.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'フォームを閉じる' : '無料で“詰まり”を相談する';
+      toggle.textContent = open ? 'フォームを閉じる' : '無料60分相談を申し込む';
     }
     function onSubmit() {
       if (!submitBtn) return;
@@ -391,22 +552,27 @@ function CTARibbon({ minimal = false }) {
   }, []);
 
   return (
-    <section id="contact" className="section" style={{ padding: minimal ? "60px 0" : "40px 0 100px" }}>
+    <section id="contact" className="section" style={{ padding: minimal ? "60px 0" : "40px 0 60px" }}>
       <div className="container-narrow">
         <p style={{ textAlign: "center", fontSize: 16, color: "var(--ink-700)", marginBottom: 24 }}>
-          業務を見ながら、無理なく続く形に整えます。
+          まずは60分、今 困っていることをお聞かせください。
         </p>
         <div style={{ background: "var(--yellow-500)", padding: "36px 40px", borderRadius: 16, textAlign: "center", boxShadow: "var(--shadow-md)", position: "relative" }}>
           <div style={{ position: "absolute", top: 10, left: 20, fontSize: 11, fontFamily: "var(--font-hand)", color: "var(--navy-900)", opacity: 0.7 }}>お気軽にどうぞ</div>
           <h2 className="cta-ribbon-title" style={{ margin: 0, fontWeight: 800, color: "var(--navy-900)", letterSpacing: "0.02em" }}>
-            業務の「詰まり」、<br/>
-            一度見せてください。
+            無料60分相談 +<br/>
+            ご提案メモ。
           </h2>
           <div style={{ margin: "16px auto 24px", width: 80, height: 2, background: "var(--navy-900)" }}></div>
-          <p style={{ margin: 0, fontSize: 16, color: "var(--navy-900)", fontWeight: 600 }}>
-            30分で、どこが詰まっているかと、<br/>
-            何から直すべきかを整理します。
+          <p style={{ margin: 0, fontSize: 16, color: "var(--navy-900)", fontWeight: 600, lineHeight: 1.85 }}>
+            現状を整理し、どこから改善すべきかの<br className="mobile-only"/>
+            入口をご案内します。
           </p>
+          <div className="cta-feature-row">
+            <div className="cta-feature">ご提案メモが付く</div>
+            <div className="cta-feature">オンライン全国対応</div>
+            <div className="cta-feature">出張も可（交通費別）</div>
+          </div>
 
           <div className="contact-box" style={{ marginTop: 28 }}>
             <button
@@ -417,7 +583,7 @@ function CTARibbon({ minimal = false }) {
               aria-controls="contact-form"
               style={{ background: "var(--navy-900)", color: "#fff" }}
             >
-              無料で“詰まり”を相談する
+              無料60分相談を申し込む
             </button>
 
             <div id="contact-form" className="contact-form-wrap" hidden>
@@ -484,5 +650,7 @@ window.HomeA = HomeA;
 window.HomeB = HomeB;
 window.HomeC = HomeC;
 window.ServiceThreeSteps = ServiceThreeSteps;
+window.ServiceFiveSteps = ServiceFiveSteps;
+window.CasePartnerBlock = CasePartnerBlock;
 window.CTARibbon = CTARibbon;
 window.TangleIllustration = TangleIllustration;

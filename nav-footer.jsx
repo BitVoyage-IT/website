@@ -53,7 +53,7 @@ function TopNav({ currentPage = "home" }) {
             </a>
           ))}
           <a href="#contact" className="nav-drawer-cta" onClick={() => setOpen(false)}>
-            無料で“詰まり”を相談する →
+            無料60分相談を申し込む →
           </a>
         </div>
       </div>
@@ -78,9 +78,11 @@ function SiteFooter() {
           <div>
             <h4>サービス</h4>
             <ul>
-              <li><a href="service.html#diagnose">小さな業務改善</a></li>
+              <li><a href="service.html#small">小さな業務改善</a></li>
+              <li><a href="service.html#domain">業務領域の整理・自動化</a></li>
+              <li><a href="service.html#diagnose">業務構造診断パック</a></li>
               <li><a href="service.html#advisor">継続改善サポート</a></li>
-              <li><a href="service.html#implement">業務の整理・再構築</a></li>
+              <li><a href="service.html#rebuild">業務全体の整理・再構築</a></li>
             </ul>
           </div>
           <div>

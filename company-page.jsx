@@ -12,8 +12,8 @@ function CompanyPage() {
             業務の<span className="marker marker-thick">「詰まり」</span>をほどく。
           </h1>
           <p className="company-hero-lead">
-            業務のムダや詰まりを見つけ、<br/>
-            小さく改善しながら、止まらず回る状態に整えます。
+            ムダや詰まりを見つけ、小さく直しながら、<br/>
+            業務が自分で回り始める形にしていきます。
           </p>
         </div>
       </section>
@@ -27,15 +27,72 @@ function CompanyPage() {
             </div>
             <h2 className="company-mission-title">
               現場が、<br className="mobile-only"/>
-              <span className="underline-hand">無理なく回り続ける</span><br className="mobile-only"/>
-              状態を当たり前にする。
+              <span className="underline-hand">自分の足で動き続けられる</span>こと。
             </h2>
             <p className="company-mission-lead">
-              改善は、一度整えて終わりではありません。<br/>
-              日々の仕事の中で、無理なく続けられる形にしていくことが大切です。<br/><br/>
-              私たちは、現場に合ったやり方で整え、<br/>
-              自然に続く状態をつくります。
+              業務改善は、入れて終わるものではありません。<br/>
+              日々の仕事に組み込まれて、はじめて続いていく。<br/><br/>
+              だから BitVoyage は、<br/>
+              現場の手で動かせる形まで仕上げてお渡しします。
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 代表ご挨拶 */}
+      <section className="section representative-section">
+        <div className="container fade-up">
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div className="section-eyebrow">representative</div>
+            <h2 className="section-title" style={{ fontSize: 28 }}>
+              <span className="marker">代表</span>からのご挨拶
+            </h2>
+          </div>
+          <div className="representative-grid">
+            <div className="representative-aside">
+              <div className="representative-photo">
+                {/* TODO: クロップ済み写真に差し替え予定 */}
+                <img src="assets/picture/1X8A4633.JPG" alt="株式会社BitVoyage 代表 北束 優花" />
+              </div>
+              <div className="representative-name">
+                <div className="representative-role">株式会社BitVoyage 代表</div>
+                <div className="representative-name-jp">北束 優花</div>
+                <div className="representative-name-furi">きたづか ゆうか</div>
+              </div>
+            </div>
+            <div className="representative-body">
+              <div className="representative-message">
+                <p>
+                  以前は大手半導体メーカーで、生産技術を担当していました。<br/>
+                  「間違いが起きにくい工程をどう作るか」を毎日考える仕事で、<br/>
+                  工程のばらつきや属人化を、仕組みで抑えていく日々でした。
+                </p>
+                <p>
+                  当時から Excel マクロを使って、<br/>
+                  工程の記録を一気通貫で残す仕組みを作っていました。
+                </p>
+                <p>
+                  業務を人の頑張りだけで支えていると、いつか限界がきます。<br/>
+                  流れや仕組みで整えるほうが、現場にも無理がない。<br/>
+                  そう感じてきました。<br/>
+                  この感覚が、今の仕事の軸になっています。
+                </p>
+                <p>
+                  独立後、自動化や AI まわりの技術を広げるなかで、<br/>
+                  ずっと頭にあったのは、東広島や呉のような地域の企業ほど、<br/>
+                  この知識が役に立つはずだ、ということでした。
+                </p>
+                <p>
+                  人手が足りないなかで、限られた人数で業務を回していく。<br/>
+                  それを外側から、現場に近い距離で支えるパートナーでありたい。<br/>
+                  そう思って BitVoyage を始めました。
+                </p>
+                <p className="representative-closing">
+                  <span className="marker">まずは、お話を聞かせてください。</span><br/>
+                  御社の業務を、一緒に整えていきます。
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -49,11 +106,14 @@ function CompanyPage() {
               ["会社名", "株式会社BitVoyage"],
               ["所在地", "広島県広島市（登記住所）"],
               ["活動拠点", "東広島市・呉市を中心に広島県内対応"],
+              ["代表者", "北束 優花（きたづか ゆうか）"],
               ["事業内容", <div>
-                <div>・ 小さな業務改善（転記・手作業・確認作業の削減）</div>
-                <div>・ 継続改善サポート（改善テーマの整理・進行管理）</div>
-                <div>・ 業務の整理・再構築（止まらず回る仕組みづくり）</div>
-                <div>・ 必要に応じたツール・システムの導入／構築支援</div>
+                <div>・ 小さな業務改善（転記・通知・集計・確認作業の削減）</div>
+                <div>・ 業務領域の整理・自動化（受発注・顧客管理・日報など）</div>
+                <div>・ 業務構造診断パック（業務全体の可視化と優先順位整理）</div>
+                <div>・ 継続改善サポート（顧問契約による継続的な改善進行）</div>
+                <div>・ 業務全体の整理・再構築（複数部門にまたがる見直し）</div>
+                <div>・ 必要に応じた AI／ツール／システムの導入支援</div>
               </div>],
               ["お問い合わせ", <a href="mailto:contact@bitvoyage.co.jp" style={{ color: "var(--navy-800)", fontWeight: 600 }}>contact@bitvoyage.co.jp</a>],
             ].map(([k, v], i, arr) => (
@@ -77,7 +137,7 @@ function CompanyPage() {
             {[
               { n: "01", t: "業務を見る", d: "現場や画面を見ながら、実際の流れに沿ってムダや詰まりを見つけます。" },
               { n: "02", t: "小さく変える", d: "大きく作り替える前に、数時間〜数日で変えられる改善から進めます。" },
-              { n: "03", t: "続く形にする", d: "一度きりの改善で終わらせず、無理なく続けられる運用に整えます。" },
+              { n: "03", t: "続く形にする", d: "改善を入れて終わりにしない。現場の人が自分で動かしていけるところまで一緒にやります。" },
             ].map(v => (
               <div key={v.n} className="card" style={{ background: "#fff" }}>
                 <div style={{ fontFamily: "var(--font-hand)", fontSize: 28, color: "var(--yellow-500)", fontWeight: 700, marginBottom: 8 }}>{v.n}</div>

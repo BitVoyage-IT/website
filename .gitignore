@@ -4,4 +4,20 @@
 .claude/
 .DS_Store
 **/.DS_Store
+
+# 内部作業ディレクトリ
 design_handoff_bitvoyage_hp/
+output/
+
+# AI 画像生成・編集の元データ（公開用は最終ファイルのみ）
+*-source.png
+*-source.jpg
+*-source.jpeg
+
+# Codex/AI ツールの作業フォルダ
+.codex/
+.openai/
+
+# Node 関連
+node_modules/
+*.log

@@ -1,62 +1,129 @@
-// service-page.jsx — サービス詳細ページ
+// service-page.jsx — サービス詳細ページ（5階層構成）
 
 function ServicePage() {
   useRevealOnScroll();
   const details = [
     {
-      id: "diagnose",
+      id: "small",
       num: "1",
       title: "小さな業務改善",
-      tagline: "まずは1つの業務から改善します",
-      scope: "数時間〜数日で対応できる範囲",
-      price: "数万円〜",
-      duration: "※数時間〜数日で対応できる範囲",
-      icon: <Icon.Diagnose size={72} />,
-      description: "転記・手作業・確認作業などのムダを見つけ、すぐに変えられるところから改善します。業務を見ながら、その場で直せる部分はそのまま改善します。",
+      tagline: "毎日くり返している手作業を減らす",
+      scope: "1つの業務の詰まりを解消",
+      price: "5〜20万円",
+      duration: "※対象業務のみ簡単に整理し、改善まで実施",
+      illustration: "assets/illustrations/service-01-small-improvement.png",
+      description: "転記・通知・集計・帳票作成・確認作業など、毎日・毎月くり返している手作業を減らします。対象となる業務の流れを簡単に整理したうえで、1つの業務の詰まりを解消します。",
       deliverables: [
+        "対象業務の流れの簡易整理",
         "改善内容の実装（または設定）",
         "簡単な運用方法の共有",
       ],
-      flow: ["業務内容を確認（オンライン可）", "改善ポイントを提案", "実際に改善"],
+      flow: ["業務内容を確認", "改善ポイントを提案", "実装・設定", "運用への引き渡し"],
+    },
+    {
+      id: "domain",
+      num: "2",
+      title: "業務領域の整理・自動化",
+      tagline: "1つの業務領域を、迷わず回る形に",
+      scope: "シフト・受発注・在庫・顧客管理・日報など",
+      price: "20〜80万円",
+      duration: "※1つの業務領域全体が対象",
+      illustration: "assets/illustrations/11-icon-tool-flow.png",
+      description: "シフト管理・受発注・在庫・顧客管理（名刺・商談履歴を含む）・日報など、1つの業務領域をまるごと見直します。ツールを入れる前に、いまの流れを書き出すところから始めます。仕組みは、流れに合わせて作ります。",
+      deliverablesLabel: "対応内容",
+      deliverables: [
+        "業務領域の流れの整理",
+        "ミスや属人化が起きやすい工程の特定",
+        "仕組み・ツールの導入／開発",
+        "現場で回る形までの定着支援",
+      ],
+      flow: ["業務領域のヒアリング", "流れの整理", "仕組みの設計", "ツール導入・実装", "運用への定着"],
+    },
+    {
+      id: "diagnose",
+      num: "3",
+      title: "業務構造診断パック",
+      tagline: "最初から業務全体を整理したい会社向け",
+      scope: "現場の流れを広く確認",
+      price: "15万円〜",
+      duration: "※現場での確認を含みます（広島県内は現場訪問／県外は要相談）",
+      illustration: "assets/illustrations/08-icon-search-doc.png",
+      description: "「どこから手をつけたらいいか分からない」── そんな会社向けのパックです。現場をひと通り見せていただき、業務全体の見取り図と、改善の優先順位を渡します。効きそうなところから、順に着手できる形でお返しします。",
+      deliverablesLabel: "お渡しするもの",
+      deliverables: [
+        "業務全体の流れの可視化",
+        "詰まり・属人化ポイントの一覧",
+        "改善の優先順位レポート",
+        "次の一手のご提案",
+      ],
+      flow: ["対象範囲のすり合わせ", "現場ヒアリング・観察", "業務マップの作成", "優先順位の提示"],
     },
     {
       id: "advisor",
-      num: "2",
+      num: "4",
       title: "継続改善サポート",
-      tagline: "改善を止めず、継続的に回していきます",
-      scope: "小さな改善を中心に対応",
+      tagline: "外部の立場で、改善の優先順位を判断し続ける",
+      scope: "毎月、業務の詰まりを確認しながら改善を進行",
       price: "月額 5万円〜",
-      duration: "※日々の業務の中で完結する改善を対象とします",
-      icon: <Icon.Advisor size={72} />,
-      description: "業務を見ながら、小さな改善を積み重ねていきます。優先順位を決めながら、無理なく改善を続けます。",
+      duration: "※顧問契約として継続的にご一緒する形",
+      illustration: "assets/illustrations/09-icon-support.png",
+      description: "毎月、業務の詰まりを一緒に確認しながら、改善の優先順位を外部の立場で見直していく顧問契約です。続けることで、社内で迷う時間や試行錯誤の手戻りが減り、改善が止まらず進みます。",
       deliverablesLabel: "対応内容",
       deliverables: [
         "改善テーマの整理と優先順位決定",
-        "小さな業務改善の実施",
+        "小さな業務改善の進行管理",
         "定期的な状況確認と次の打ち手の整理",
-        "改善の進行管理（止まらない状態の維持）",
+        "経営判断に近い視点での助言",
       ],
-      note: "※大きな仕組み変更・システム構築は別途プロジェクト対応",
-      flow: ["改善テーマの整理", "優先順位の決定", "小さな改善の実施", "定期的な振り返り・次の改善決定"],
+      flow: ["現状把握と優先順位整理", "毎月の改善進行", "定期的な振り返り", "次の改善テーマ決定"],
     },
     {
-      id: "implement",
-      num: "3",
-      title: "業務の整理・再構築",
-      tagline: "業務の流れをつくり直します",
-      scope: "大きな変更はプロジェクト対応",
-      price: "個別お見積り",
-      duration: "※複数業務・複数人に関わる改善が対象",
-      icon: <Icon.Implement size={72} />,
-      description: "業務全体を見直し、止まらず回る形に整えます。必要に応じて、ツールや仕組みも含めて改善します。",
+      id: "rebuild",
+      num: "5",
+      title: "業務全体の整理・再構築",
+      tagline: "複数部門・複数業務にまたがる大きな見直し",
+      scope: "属人化・二重入力・情報分断の整理",
+      price: "50万円〜",
+      duration: "※プロジェクト形式、規模により個別お見積り",
+      illustration: "assets/illustrations/10-icon-growth.png",
+      description: "複数の部門・業務にまたがる大きな見直しです。「〇〇さんしか分からない」「同じ情報を別部署でもう一度入れている」「情報があちこちに散らばっている」── このあたりを丸ごとほどき、流れを引き直します。",
       deliverablesLabel: "対応内容",
       deliverables: [
-        "業務全体の流れの整理",
-        "詰まりや属人化の解消",
+        "業務全体の流れの整理・再設計",
+        "情報の分断・二重入力の解消",
         "運用ルール・仕組みの設計",
-        "必要に応じたツール・システムの導入／構築",
+        "ツール・システムの導入／構築",
+        "運用への定着支援",
       ],
-      flow: ["現状の業務整理", "課題・構造の特定", "改善方針の設計", "仕組み・ツールの整備", "運用への定着支援"],
+      note: "※大きな改善も対応可能ですが、まずは一部から段階的に進めることをおすすめしています。",
+      flow: ["対象範囲のすり合わせ", "現状の業務整理", "改善方針の設計", "段階的な実装", "運用への定着支援"],
+    },
+  ];
+
+  const cases = [
+    {
+      title: "受注・連絡業務",
+      illustration: "assets/illustrations/04-icon-mail-person.png",
+      problem: "手作業の個別送信で、時間とミスが発生",
+      result: <>一括送信＋個別差し込みで、作業を<span className="marker">大幅削減</span></>,
+    },
+    {
+      title: "計算・集計業務",
+      illustration: "assets/illustrations/05-icon-chart-calc.png",
+      problem: "外部ソフト依存で、コストと時間が増加",
+      result: <>内製化で、作業時間とコストを<span className="marker">削減</span></>,
+    },
+    {
+      title: "製造工程の管理",
+      illustration: "assets/illustrations/06-icon-gears-checklist.png",
+      problem: "工程のばらつきと属人化が常態化",
+      result: <>仕組み化と履歴一元管理で、<span className="marker">再現性のある工程</span>に</>,
+    },
+    {
+      title: "情報管理・業務整理",
+      illustration: "assets/illustrations/07-icon-folder-flow.png",
+      problem: "情報が分散し、確認に時間がかかる",
+      result: <>管理ツールと流れ整理で、<span className="marker">確認時間を削減</span></>,
     },
   ];
 
@@ -67,30 +134,27 @@ function ServicePage() {
         <div className="container-narrow fade-up" style={{ textAlign: "center" }}>
           <div className="section-eyebrow">service</div>
           <h1 className="page-hero-title">
-            小さく改善し、<br className="mobile-only"/>
-            <span className="underline-hand">無理なく続ける</span>
+            小さく始めて、<span className="underline-hand">無理なく続ける</span>
           </h1>
           <p className="page-hero-lead">
-            まずは小さな改善から始め、必要に応じて継続・全体改善へと進めていきます。
+            5つのサービスを、御社の状況に合わせて組み合わせます。<br/>
+            まずは1つの業務から始め、必要に応じて領域・全体へ広げていきます。
           </p>
         </div>
       </section>
 
-      {/* サービス一覧カード */}
+      {/* サービス一覧（改善ノート行スタイル） */}
       <section className="service-jump-section">
-        <div className="container">
-          <div className="service-jump-grid">
+        <div className="container-narrow fade-up">
+          <div className="service-five-grid">
             {details.map(d => (
-              <a key={d.id} href={`#${d.id}`} className="card fade-up" style={{ textDecoration: "none", color: "inherit" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <span className="num-badge">{d.num}</span>
-                  <h3 style={{ fontSize: 20, margin: 0, color: "var(--navy-900)" }}>{d.title}</h3>
+              <a key={d.id} href={`#${d.id}`} className="service-five-row">
+                <div className="service-five-tab">{d.num}</div>
+                <div className="service-five-content">
+                  <h3 className="service-five-title">{d.title}</h3>
+                  <p className="service-five-sub">{d.tagline}</p>
                 </div>
-                <p style={{ fontSize: 14, color: "var(--ink-700)", margin: "0 0 4px" }}>{d.tagline}</p>
-                <p style={{ fontSize: 14, color: "var(--ink-700)", margin: "0 0 22px", lineHeight: 1.8, fontWeight: 800 }}>{d.scope}</p>
-                <div style={{ fontSize: 15, color: "var(--ink-700)", fontWeight: 500 }}>
-                  料金：{d.price}
-                </div>
+                <div className="service-five-price">{d.price}</div>
               </a>
             ))}
           </div>
@@ -110,7 +174,9 @@ function ServicePage() {
                 <p style={{ fontFamily: "var(--font-hand)", color: "var(--navy-700)", fontSize: 16, margin: "0 0 20px" }}>
                   — {d.tagline} —
                 </p>
-                <div style={{ color: "var(--navy-800)", margin: "24px 0" }}>{d.icon}</div>
+                <div className="service-detail-illustration">
+                  <img src={d.illustration} alt="" />
+                </div>
                 <div style={{ background: "var(--yellow-200)", padding: "16px 20px", borderRadius: 10, marginTop: 20 }}>
                   <div style={{ fontSize: 13, color: "var(--navy-900)", fontWeight: 700, marginBottom: 4 }}>価格</div>
                   <div style={{ fontSize: 18, fontWeight: 800, color: "var(--navy-900)" }}>{d.price}</div>
@@ -153,6 +219,40 @@ function ServicePage() {
         </section>
       ))}
 
+      {/* 改善事例（一部） */}
+      <section className="section cases-section" style={{ padding: "80px 0", background: "var(--paper-2)" }}>
+        <div className="container fade-up">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div className="section-eyebrow">cases</div>
+            <h2 className="section-title" style={{ fontSize: 28 }}>
+              <span className="marker">改善事例</span>（一部）
+            </h2>
+            <p style={{ fontSize: 15, color: "var(--ink-700)", lineHeight: 1.9, margin: "12px 0 0" }}>
+              こんな業務が、こう変わっています。
+            </p>
+          </div>
+          <div className="cases-grid">
+            {cases.map(c => (
+              <div key={c.title} className="case-card fade-up">
+                <h3 className="case-card-title">{c.title}</h3>
+                <div className="case-card-illustration">
+                  <img src={c.illustration} alt="" />
+                </div>
+                <p className="case-card-problem">{c.problem}</p>
+                <div className="case-card-arrow" aria-hidden="true">
+                  <svg width="22" height="40" viewBox="0 0 22 40" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 4 q-1 12 0 24" />
+                    <path d="M5 24 q4 4 6 8 q2 -4 6 -8" />
+                  </svg>
+                  <span>改善</span>
+                </div>
+                <p className="case-card-result">{c.result}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* よくあるご質問 */}
       <section className="section" style={{ padding: "80px 0" }}>
         <div className="container-narrow fade-up">
@@ -160,11 +260,11 @@ function ServicePage() {
             <span className="marker">よくある</span>ご質問
           </h2>
           {[
-            { q: "どこまで対応してもらえますか？", a: "小さな業務改善から、業務全体の整理・再構築まで対応しています。内容に応じて、顧問・プロジェクトとして進めます。" },
-            { q: "小さな改善とはどのくらいの内容ですか？", a: "数時間〜数日で対応できる業務改善が対象です。転記作業の削減や、手作業の簡略化などから対応します。" },
-            { q: "顧問サポートでは何をしてもらえますか？", a: "小さな改善を中心に、優先順位を決めながら継続的に改善を進めます。大きな仕組み変更やシステム構築は別途プロジェクトとして対応します。" },
-            { q: "ツールやシステムの提案も可能ですか？", a: "必要に応じて、ツールの選定から設定・開発まで対応します。作るだけでなく、現場で使える形まで整えます。" },
-            { q: "対応エリアはどこまでですか？", a: "オンラインでの対応は全国可能です。現地対応は主に広島県内を中心に行っています。" },
+            { q: "どこから始めるのが良いですか？", a: "規模に関わらず、まずは無料相談で御社の状況を伺います。①小さな業務改善から始めるパターンも、③業務構造診断パックから入るパターンも自然です。状況に合わせて、無理のない始め方をご案内します。" },
+            { q: "①小さな業務改善と④継続改善サポートは何が違うのですか？", a: "①は「この業務を直してほしい」という1件単位の依頼です。④は、毎月の改善の優先順位を、外部の立場から見続ける顧問契約です。" },
+            { q: "ツールやシステムの提案も可能ですか？", a: "必要に応じて、ツールの選定から設定・開発まで対応します。ただし「ツールありき」では進めません。業務の流れ自体を整理したうえで、必要な仕組みだけを整えるのが基本姿勢です。AI を含めたツール導入も同じスタンスで取り入れます。" },
+            { q: "対応エリアはどこまでですか？", a: "無料相談やオンラインで進められるサービスは全国対応可能です。業務構造診断パックなど現場確認を含むものは、広島県内（広島・東広島・呉）を中心に現場訪問で対応しています。県外の場合は要相談（出張可・交通費別）です。" },
+            { q: "事例パートナー特典について教えてください。", a: "ご契約後の最初の「小さな業務改善」1件を半額でご提供する特典です。先着3社限定で、改善前と改善後の状態を、事例として公開させていただける企業様が対象です（社名公開を歓迎。ご希望により業種のみの公開でも可）。" },
           ].map((f, i) => (
             <details key={i} className="card" style={{ marginBottom: 12, padding: 0 }}>
               <summary style={{ padding: "18px 24px", cursor: "pointer", fontWeight: 700, color: "var(--navy-900)", fontSize: 16, listStyle: "none", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
